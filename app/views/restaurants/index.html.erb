@@ -1,4 +1,31 @@
-<h1>Listing restaurants</h1>
+
+<div class="page-header">
+    <h1>Restaurants</h1>
+</div>
+
+<%= link_to 'Post a New Restaurant', new_restaurant_path, class: "btn btn-success" %>
+
+<% @restaurants.each do |restaurant| %>
+    <div class="restaurant">
+        <strong><%= restaurant.name %></strong>
+        <p><%= restaurant.address %></p>
+        <p><%= restaurant.opening %></p>
+        <p><%= restaurant.price %></p>
+        <p><%= restaurant.distance %> (min)</p>
+        <p><%= restaurant.phone %></p>
+        <p><%= restaurant.website %></p>
+        <div class="meta">
+            <%= link_to time_ago_in_words(restaurant.created_at) + " ago" , restaurant %>
+            <span class="admin">
+                | <%= link_to 'Edit', edit_restaurant_path(restaurant) %> |
+                <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </span>
+        </div>
+    </div>
+<% end %>
+
+
+<!-- <h1>Restaurants</h1>
 
 <table>
   <tr>
@@ -17,12 +44,12 @@
 <% @restaurants.each do |restaurant| %>
   <tr>
     <td><%= restaurant.name %></td>
-    <td><%= restaurant.address %></td>
-    <td><%= restaurant.opening %></td>
-    <td><%= restaurant.price %></td>
-    <td><%= restaurant.distance %></td>
-    <td><%= restaurant.phone %></td>
-    <td><%= restaurant.website %></td>
+    <%= restaurant.address %>
+    <%= restaurant.opening %>
+    <%= restaurant.price %>
+    <%= restaurant.distance %>
+    <%= restaurant.phone %>
+    <%= restaurant.website %>
     <td><%= link_to 'Show', restaurant %></td>
     <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
     <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -32,4 +59,4 @@
 
 <br />
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
+<%= link_to 'New Restaurant', new_restaurant_path %> -->
