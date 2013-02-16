@@ -7,13 +7,14 @@
 
 <% @restaurants.each do |restaurant| %>
     <div class="restaurant">
+        <br>
         <strong><%= restaurant.name %></strong>
         <p><%= restaurant.address %></p>
         <p><%= restaurant.opening %></p>
         <p><%= restaurant.price %></p>
         <p><%= restaurant.distance %> (min)</p>
         <p><%= restaurant.phone %></p>
-        <p><%= restaurant.website %></p>
+        <p><%= link_to restaurant.website, restaurant.website %></p>
         <div class="meta">
             <%= link_to time_ago_in_words(restaurant.created_at) + " ago" , restaurant %>
             <span class="admin">
