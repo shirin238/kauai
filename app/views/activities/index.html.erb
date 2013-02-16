@@ -1,0 +1,60 @@
+<div class="page-header">
+    <h1>Activities</h1>
+</div>
+
+<%= link_to 'Post a New Activity', new_activity_path, class: "btn btn-warning" %>
+
+
+<% @activities.each do |activity| %>
+    <div class="restaurant">
+        <br>
+        <strong><%= activity.title %></strong>
+        <p><%= activity.overview %></p>
+        <p><%= activity.address %></p>
+        <p><%= activity.distance %></p>
+        <p><%= activity.duration %> (min)</p>
+        <p><%= activity.cost %></p>
+        <p><%= link_to activity.website, activity.website %></p>
+        <div class="meta">
+            <%= link_to time_ago_in_words(activity.created_at) + " ago" , activity %>
+            <span class="admin">
+                | <%= link_to 'Edit', edit_activity_path(activity) %> |
+                <%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </span>
+        </div>
+    </div>
+<% end %>
+
+<!-- <table>
+  <tr>
+    <th>Title</th>
+    <th>Overview</th>
+    <th>Address</th>
+    <th>Distance</th>
+    <th>Duration</th>
+    <th>Cost</th>
+    <th>Website</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @activities.each do |activity| %>
+  <tr>
+    <td><%= activity.title %></td>
+    <td><%= activity.overview %></td>
+    <td><%= activity.address %></td>
+    <td><%= activity.distance %></td>
+    <td><%= activity.duration %></td>
+    <td><%= activity.cost %></td>
+    <td><%= activity.website %></td>
+    <td><%= link_to 'Show', activity %></td>
+    <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+    <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Activity', new_activity_path %> -->
